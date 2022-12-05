@@ -1,0 +1,438 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>scss的内置函数笔记 | ShuMo</title><meta name="author" content="ShuMo"><meta name="copyright" content="ShuMo"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="referrer" content="no-referrer"><meta name="description" content=".font_color{   color: var(--light-subtitle-color);   font-weight: 700; } .common_title{   color: var(--scrollbar-color);   font-weight: 700;   font-size: 16px; }   前言在前端样式处理中，传统的css书写在一定程度上是有着自己的局限性和">
+<meta property="og:type" content="article">
+<meta property="og:title" content="scss的内置函数笔记">
+<meta property="og:url" content="https://shumoyun.fun/post/66cc2346/index.html">
+<meta property="og:site_name" content="ShuMo">
+<meta property="og:description" content=".font_color{   color: var(--light-subtitle-color);   font-weight: 700; } .common_title{   color: var(--scrollbar-color);   font-weight: 700;   font-size: 16px; }   前言在前端样式处理中，传统的css书写在一定程度上是有着自己的局限性和">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://shumoyun.fun/img/tagImg6.jpg">
+<meta property="article:published_time" content="2022-12-05T00:24:52.000Z">
+<meta property="article:modified_time" content="2022-12-05T09:08:43.438Z">
+<meta property="article:author" content="ShuMo">
+<meta property="article:tag" content="scss">
+<meta property="article:tag" content="css">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://shumoyun.fun/img/tagImg6.jpg"><link rel="shortcut icon" href="/img/blogLog.png"><link rel="canonical" href="https://shumoyun.fun/post/66cc2346/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?439a0d0abeb31dd8f338efd8266c999b";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'scss的内置函数笔记',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-12-05 17:08:43'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/background.css"><link rel="stylesheet" href="/css/universe.css"><link rel="stylesheet" href="/css/rightmenu.css"><link rel="stylesheet" href="/css/iconfont.css"><svg aria-hidden="true" style="position:absolute; overflow:hidden; width:0; height:0"><symbol id="icon-sun" viewBox="0 0 1024 1024"><path d="M960 512l-128 128v192h-192l-128 128-128-128H192v-192l-128-128 128-128V192h192l128-128 128 128h192v192z" fill="#FFD878" p-id="8420"></path><path d="M736 512a224 224 0 1 0-448 0 224 224 0 1 0 448 0z" fill="#FFE4A9" p-id="8421"></path><path d="M512 109.248L626.752 224H800v173.248L914.752 512 800 626.752V800h-173.248L512 914.752 397.248 800H224v-173.248L109.248 512 224 397.248V224h173.248L512 109.248M512 64l-128 128H192v192l-128 128 128 128v192h192l128 128 128-128h192v-192l128-128-128-128V192h-192l-128-128z" fill="#4D5152" p-id="8422"></path><path d="M512 320c105.888 0 192 86.112 192 192s-86.112 192-192 192-192-86.112-192-192 86.112-192 192-192m0-32a224 224 0 1 0 0 448 224 224 0 0 0 0-448z" fill="#4D5152" p-id="8423"></path></symbol><symbol id="icon-moon" viewBox="0 0 1024 1024"><path d="M611.370667 167.082667a445.013333 445.013333 0 0 1-38.4 161.834666 477.824 477.824 0 0 1-244.736 244.394667 445.141333 445.141333 0 0 1-161.109334 38.058667 85.077333 85.077333 0 0 0-65.066666 135.722666A462.08 462.08 0 1 0 747.093333 102.058667a85.077333 85.077333 0 0 0-135.722666 65.024z" fill="#FFB531" p-id="11345"></path><path d="M329.728 274.133333l35.157333-35.157333a21.333333 21.333333 0 1 0-30.165333-30.165333l-35.157333 35.157333-35.114667-35.157333a21.333333 21.333333 0 0 0-30.165333 30.165333l35.114666 35.157333-35.114666 35.157334a21.333333 21.333333 0 1 0 30.165333 30.165333l35.114667-35.157333 35.157333 35.157333a21.333333 21.333333 0 1 0 30.165333-30.165333z" fill="#030835" p-id="11346"></path></symbol></svg><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-clock/lib/clock.min.css" /><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@1.0.17/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.2"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="my_img_warp"><img class="my_img_loading" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/tagImg08.jpg" onerror="this.onerror=null;this.src='/'" alt="avatar"/></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+
+if (false) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/backgroundImg05.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 导航</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child" style="left:-55px;"><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-gamepad"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child" style="left:-55px;"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li><li><a class="site-page child" href="/bangumis/"><i class="fa-fw fas fa-tv"></i><span> 番剧</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/tagImg6.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">ShuMo</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 导航</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child" style="left:-55px;"><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-gamepad"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child" style="left:-55px;"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li><li><a class="site-page child" href="/bangumis/"><i class="fa-fw fas fa-tv"></i><span> 番剧</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">scss的内置函数笔记</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-12-05T00:24:52.000Z" title="发表于 2022-12-05 08:24:52">2022-12-05</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-12-05T09:08:43.438Z" title="更新于 2022-12-05 17:08:43">2022-12-05</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>11分钟</span></span><span class="post-meta-separator">|</span><span id="" data-flag-title="scss的内置函数笔记"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="twikoo_visitors"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><style>
+.font_color{
+  color: var(--light-subtitle-color);
+  font-weight: 700;
+}
+.common_title{
+  color: var(--scrollbar-color);
+  font-weight: 700;
+  font-size: 16px;
+}
+</style>
+
+<p><span class="font_color">前言</span><br><div class="note info simple no-icon flat"><p>在前端样式处理中，传统的css书写在一定程度上是有着自己的局限性和代码的臃肿性，为了使代码更加简洁方便从而诞生了css的”<span class="font_color">预处理器</span>“，一款专门的<span class="p red">css编程语言</span>，具有”<span class="font_color">变量、函数、计算，嵌套关系</span>“等用法。主要有三大样式预处理器” <script type="math/tex">\color{red}{sass、less、stylus}</script> 。而本文章主要讲述的是 <script type="math/tex">\color{red}{sass}</script> 的一些用法</p>
+</div></p>
+<h3 id="更新记录"><a href="#更新记录" class="headerlink" title="更新记录"></a>更新记录</h3><details class="folding-tag" cyan><summary> 点击查看更新记录 </summary>
+              <div class="content">
+              <div class="timeline blue"><div class="timeline-item headline"><div class="timeline-item-title"><div class="item-circle"><p>更新记录</p></div></div></div><div class="timeline-item"><div class="timeline-item-title"><div class="item-circle"><p>2022-12-5</p></div></div><div class="timeline-item-content"><ul><li>1.<a href="/post/66cc2346/#文件命令的规范">文件命令的规范</a></li><li>2.<a href="/post/66cc2346/#变量的定义">变量的定义</a></li><li>3.<a href="/post/66cc2346/#常用内置函数">常用内置函数</a></li><li>4.<a href="/post/66cc2346/#选择器的应用">选择器的应用</a></li><li>5.<a href="/post/66cc2346/#content占位符">@content占位符</a></li><li>6.<a href="/post/66cc2346/#mixin混合器与-include引入器">@mixin混合器与@include引入器</a></li><li>7.<a href="/post/66cc2346/#each…in…的使用">@each…in…的使用</a></li><li>8.<a href="/post/66cc2346/#map-has-key的应用">map-has-key的应用</a></li><li>9.<a href="/post/66cc2346/#map-get的应用">map-get的应用</a></li><li>10.<a href="/post/66cc2346/#scssjavascript">scssjavascript</a></li></ul></div></div></div>
+              </div>
+            </details>
+<h3 id="文件命令的规范"><a href="#文件命令的规范" class="headerlink" title="文件命令的规范"></a>文件命令的规范</h3><div class="note info simple no-icon flat"><p>【<strong class="font_color">_</strong>】:下划线</p>
+<p style="text-indent:2em;">如果我们需要导入scss文件，但又不希望将这些导入的文件将其编译为css，我们只需要在文件命名前添加一个下划线，这样就会告诉scss不要单独编译这些文件，但是引入的时候是不需要添加文件前面的下划线</p></div>
+<figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> *url:表示文件路径</span></span><br><span class="line"><span class="comment"> *corner:自定义名 要调取另一个scss文件中@mixin 的方法前缀</span></span><br><span class="line"><span class="comment"> *1.@forward &quot;url&quot; as corner  为url调用增加前缀 可以调用另一个scss文件的@mixin值 corner.xxx</span></span><br><span class="line"><span class="comment"> *2.@forward &quot;url&quot; with ($background:#123345) 给另一个文件中有$background参数改变它的值（注意另一个文件中定义$background时必须加上 &quot;!default&quot;,否则不能改变）</span></span><br><span class="line"><span class="comment"> *3.@use &quot;url&quot; as corner with ($background:#123345) 就是中和了第1条和第2条特性</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">//分文件</span></span><br><span class="line">_head<span class="selector-class">.scss</span></span><br><span class="line">_body<span class="selector-class">.scss</span></span><br><span class="line"><span class="comment">//内容</span></span><br><span class="line">  <span class="variable">$back</span>: <span class="number">#9809ac</span> !default;</span><br><span class="line">  <span class="keyword">@mixin</span> between&#123;</span><br><span class="line">    <span class="attribute">display</span>:flex;</span><br><span class="line">    <span class="attribute">align-items</span>: center;</span><br><span class="line">    <span class="attribute">justify-content</span>: space-between;</span><br><span class="line">  &#125;</span><br><span class="line">_footer<span class="selector-class">.scss</span></span><br><span class="line"><span class="comment">//内容</span></span><br><span class="line">  <span class="variable">$back</span>: <span class="number">#9809ac</span> !default;</span><br><span class="line">  <span class="keyword">@mixin</span> between&#123;</span><br><span class="line">    <span class="attribute">display</span>:flex;</span><br><span class="line">    <span class="attribute">align-items</span>: center;</span><br><span class="line">    <span class="attribute">justify-content</span>: space-between;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="comment">//主文件</span></span><br><span class="line">index<span class="selector-class">.scss</span></span><br><span class="line">  <span class="comment">//引入方式1</span></span><br><span class="line">  <span class="keyword">@import</span> <span class="string">&quot;./head.scss&quot;</span></span><br><span class="line">  //引入方式<span class="number">2</span></span><br><span class="line">  <span class="keyword">@forward</span> <span class="string">&#x27;./body.scss&#x27;</span> as corner</span><br><span class="line">  //引入方式<span class="number">3</span></span><br><span class="line">  <span class="keyword">@use</span> <span class="string">&#x27;./footer.scss&#x27;</span> as corner with (<span class="variable">$back</span>:<span class="number">#30a6e6</span>;)</span><br><span class="line"><span class="comment">//内容</span></span><br><span class="line"><span class="keyword">@mixin</span> box&#123;</span><br><span class="line">  <span class="keyword">@include</span> corner.between;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="变量的定义"><a href="#变量的定义" class="headerlink" title="变量的定义"></a>变量的定义</h3><div class="note info simple no-icon flat"><p>变量的定义一般定义在文档的<span class="p red">开头位置用</span>,用 <span class="p red">$加英文定义</span>，如下</p>
+</div>
+<details class="folding-tag" cyan><summary> 点击查看定义详情 </summary>
+              <div class="content">
+              <p><strong>1.单个定义（类似于JavaScript中的基本数据类型）</strong><br><figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="variable">$color_border</span>:<span class="number">#f00</span>;</span><br><span class="line"><span class="variable">$sum</span>: <span class="number">20</span>;</span><br></pre></td></tr></table></figure><br><strong>2.多个list定义 (类似于javaScript中的数组)</strong><br><figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 定义四个值,用逗号隔开</span></span><br><span class="line"><span class="variable">$list1</span>: <span class="number">245</span>, <span class="number">234</span>,<span class="number">567</span>,<span class="number">5478</span>;</span><br><span class="line"><span class="comment">// 定义四个值，用空格隔开，不能加逗号</span></span><br><span class="line"><span class="variable">$list2</span>: <span class="number">245</span> <span class="number">234</span> <span class="number">567</span> <span class="number">5478</span>;</span><br><span class="line"><span class="comment">// 定义二个值</span></span><br><span class="line"><span class="variable">$list3</span>: <span class="number">245</span> bold, <span class="number">567</span> solid;</span><br></pre></td></tr></table></figure><br><strong>3.定义键值对的方式（类似于JavaScript的引用类型）</strong><br><figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="variable">$font-weights</span>:(<span class="string">&#x27;regular&#x27;</span>:<span class="number">400</span>,<span class="string">&#x27;medium&#x27;</span>:<span class="number">500</span>,<span class="string">&#x27;bold&#x27;</span>:(<span class="string">&#x27;warpvalue&#x27;</span>: none))</span><br><span class="line">//移动端中定义二倍图的方式</span><br><span class="line"><span class="variable">$breakpoints</span>:(</span><br><span class="line">  <span class="string">&#x27;xs-retina&#x27;</span>:(max-width:<span class="number">768px</span>) and (-webkit-min-device-pixel-ratio:<span class="number">2</span>)</span><br><span class="line">)</span><br></pre></td></tr></table></figure><br><strong>4.给定义的值为一个默认值,如果这文件的变量想要在另一个文件中改变，那么一定要在这变量后面加上这个默认标识</strong><strong style="color:red">!default</strong><br><figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="variable">$back-color</span>: <span class="number">#aac</span> !default;</span><br></pre></td></tr></table></figure><br><strong>5.在一个scss文件中，是存在域的有全局域和私有域（私有域其实就是一个大括号内）。而</strong><strong style="color:red">!global</strong><strong>（可以将一个私有域中的变量设值为一个全局域的变量）</strong><br><figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.warp</span>&#123;</span><br><span class="line">  <span class="variable">$warp</span>:bold !global;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+              </div>
+            </details>
+<h3 id="常用内置函数"><a href="#常用内置函数" class="headerlink" title="常用内置函数"></a>常用内置函数</h3><h4 id="改变颜色内置函数"><a href="#改变颜色内置函数" class="headerlink" title="改变颜色内置函数"></a>改变颜色内置函数</h4><details class="folding-tag" cyan><summary> 点击查看具体改颜色函数 </summary>
+              <div class="content">
+              <p><strong class="font_color">lighten(颜值,改变的数值)</strong>函数、<strong class="font_color">darken(颜值,改变的数值)</strong>函数的使用</p><figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 在原色的亮度值基础上增加20%亮度（变亮） </span></span><br><span class="line"><span class="variable">$back-color</span>: <span class="built_in">lighten</span>(<span class="number">#E6A23c</span>,<span class="number">20%</span>); <span class="comment">//#d09e52</span></span><br><span class="line"><span class="comment">// 在原色的亮度值基础上减少20%亮度（变暗）</span></span><br><span class="line"><span class="variable">$back-color-dar</span>: <span class="built_in">darken</span>(<span class="number">#e6a23c</span>,<span class="number">20%</span>);</span><br></pre></td></tr></table></figure><div class="note danger simple no-icon flat"><p>注意：这里改变的是颜色的亮度</p></div><p><strong class="font_color">desaturate(颜值,改变的数值)</strong>函数、<strong class="font_color">saturate(颜值,改变的数值)</strong>函数的使用,它的第二个值是在0%到100%直接取值，不能超出</p><figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="comment">//在原色饱和度上增加20%</span></span><br><span class="line"><span class="variable">$back-desat</span>:<span class="built_in">desaturate</span>(<span class="number">#E6a23c</span>,<span class="number">20%</span>);</span><br><span class="line"><span class="comment">//在原色饱和度下减少20%</span></span><br><span class="line"><span class="variable">$back-sat</span>: <span class="built_in">saturate</span>(<span class="number">#E6a23c</span>,<span class="number">20%</span>)</span><br></pre></td></tr></table></figure><p><div class="note danger simple no-icon flat"><p>注意：这里改变的是颜色色彩饱和度，饱和度越高色彩越纯越浓，饱和度越低则色彩变灰变淡</p></div></p><p><span class="p red">使用场景</span>：一般用于不想改变原来颜色值然后元素又要做<span class="p red">hover/focus</span>的时候例如：</p><figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="variable">$back-color</span>:<span class="number">#eca</span>;</span><br><span class="line"><span class="selector-tag">span</span>&#123;</span><br><span class="line">  <span class="attribute">color</span>:<span class="variable">$back-color</span>;</span><br><span class="line">  &amp;<span class="selector-pseudo">:hover</span>&#123;</span><br><span class="line">    <span class="attribute">color</span>:<span class="built_in">lighten</span>(<span class="variable">$back-color</span>,<span class="number">20%</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+              </div>
+            </details>
+<h4 id="处理字符串的函数"><a href="#处理字符串的函数" class="headerlink" title="处理字符串的函数"></a>处理字符串的函数</h4><p><strong class="font_color">inspect()</strong>函数、<strong class="font_color">unquote()</strong>函数<strong class="font_color">quote()</strong>函数的使用</p>
+
+<div class="note info simple no-icon flat"><ul>
+<li>1.inspect(): 由于maps不能转换为纯css，作为变量的值或者参数传梯给css函数将会导致错误 使用inspect函数以产生输出字符串的复制代码</li>
+<li>2.unquote():删除字符串中的引号</li>
+<li>3.quote(): 给字符添加引号</li>
+<li>4.#{}: 在字符中可以书写scss内置函数</li>
+</ul>
+</div>
+<figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="comment">//使用</span></span><br><span class="line"><span class="variable">$border-color</span>:(<span class="number">#caa</span>,<span class="number">#aa1</span>,<span class="number">#cc7</span>);</span><br><span class="line"><span class="keyword">@mixin</span> backgroundFuc()&#123;</span><br><span class="line">  <span class="keyword">@each</span> <span class="variable">$val</span> in <span class="variable">$border-color</span> &#123;</span><br><span class="line">    #&#123;<span class="variable">$val</span>&#125;&#123;</span><br><span class="line">      <span class="attribute">border</span>:<span class="number">1px</span> solid #&#123;<span class="variable">$val</span>&#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 编译后的结果</span></span><br><span class="line"><span class="selector-id">#caa</span>&#123;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#caa</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-id">#aa1</span>&#123;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#aa1</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-id">#cc7</span>&#123;</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#cc7</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="index-list-val-查找list索引函数-val-某个具体的值"><a href="#index-list-val-查找list索引函数-val-某个具体的值" class="headerlink" title="index(list,$val)查找list索引函数($val:某个具体的值)"></a>index(list,$val)查找list索引函数($val:某个具体的值)</h4><figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="variable">$list</span>:(<span class="number">23</span>,<span class="number">45</span>,<span class="number">342</span>,<span class="number">12</span>,<span class="number">34</span>);</span><br><span class="line"><span class="built_in">index</span>($list,<span class="number">342</span>) <span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
+<div class="note danger simple no-icon flat"><p><span class="font_color">注意:</span>index函数只有二个值，第一个值是传入要查询索引的<span class="p red">list</span>，第二个值是具体要查询<span class="p red">索引的值</span>。其中索引是从<span class="p red">1</span>开始的，不是从0开始，这和javascript的区别</p>
+</div>
+<h4 id="nth-list-inx-函数返回的是对应索引的值，具体应用如下"><a href="#nth-list-inx-函数返回的是对应索引的值，具体应用如下" class="headerlink" title="nth($list,inx)函数返回的是对应索引的值，具体应用如下"></a>nth($list,inx)函数返回的是对应索引的值，具体应用如下</h4><figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="variable">$list1</span>: <span class="number">245</span>, <span class="number">234</span>,<span class="number">567</span>,<span class="number">5478</span>; <span class="comment">//定义list方式前面有讲述</span></span><br><span class="line"><span class="built_in">nth</span>($list1,<span class="number">4</span>) <span class="comment">//5478</span></span><br></pre></td></tr></table></figure>
+<div class="note danger simple no-icon flat"><p><span class="font_color">注意:</span>nth函数只有二个值，第一个值是传入要查询的<span class="p red">list</span>，第二个值是具体要查询的<span class="p red">索引</span>。其中索引是从<span class="p red">1</span>开始的，不是从0开始，这和javascript的不同点</p>
+</div>
+<h4 id="warn提示函数"><a href="#warn提示函数" class="headerlink" title="@warn提示函数"></a>@warn提示函数</h4><figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 使用</span></span><br><span class="line"><span class="variable">$ca</span>: none;</span><br><span class="line"><span class="variable">$--back-color</span>:red;</span><br><span class="line"><span class="keyword">@mixin</span> uls(<span class="variable">$v</span>)&#123;</span><br><span class="line">  <span class="keyword">@if</span> <span class="variable">$v</span> == visble&#123;</span><br><span class="line">    <span class="attribute">background</span>:<span class="variable">$--back-color</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">@else</span>&#123;</span><br><span class="line">    <span class="keyword">@warn</span> <span class="string">&quot;没有#&#123;$v&#125;&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="选择器的应用"><a href="#选择器的应用" class="headerlink" title="选择器的应用"></a>选择器的应用</h3><h4 id="extend-选择继承器"><a href="#extend-选择继承器" class="headerlink" title="@extend 选择继承器"></a>@extend 选择继承器</h4><p>选择继承器的意思就是说一个选择继承器可以继承另一个选择器定义的所用样式<br><figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="variable">$yl</span>:<span class="number">#ca0</span>;</span><br><span class="line">%<span class="selector-tag">span</span>&#123;</span><br><span class="line">  <span class="attribute">border</span>:<span class="number">1px</span> solid <span class="variable">$yl</span>;</span><br><span class="line">  <span class="attribute">color</span>: <span class="variable">$yl</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">  <span class="keyword">@extend</span> %span;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="选择器占位符"><a href="#选择器占位符" class="headerlink" title="%选择器占位符"></a>%选择器占位符</h4><div class="note danger simple no-icon flat"><p><span class="p red">注意</span>：<span class="font_color">%</span>选择器占位符只能用选择继承器(<span class="font_color">@extend</span>)调用，否则无法生效</p>
+</div>
+<figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="selector-pseudo">:root</span>&#123;</span><br><span class="line">  <span class="attr">--common-color</span>:<span class="number">#f00</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 定义</span></span><br><span class="line"><span class="selector-tag">p</span>%box&#123;</span><br><span class="line">  <span class="attribute">color</span>:<span class="built_in">var</span>(--common-color);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line"><span class="selector-class">.div_box</span>&#123;</span><br><span class="line">  <span class="keyword">@extend</span> %box;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 输出的结果</span></span><br><span class="line"><span class="selector-tag">p</span><span class="selector-class">.div_box</span>&#123;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#f00</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="at-root跳出继承器"><a href="#at-root跳出继承器" class="headerlink" title="@at-root跳出继承器"></a>@at-root跳出继承器</h4><p>跳出继承器有一个参数<span class="font_color">without</span>这个参数有四个具体的值</p>
+
+<div class="note info simple no-icon flat"><ul>
+<li>1.all(表示跳出所有的)</li>
+<li>2.rule（表示跳出常规的，不能跳出media和support。是默认值）</li>
+<li>3.media（表示可以跳出media媒体查询，不跳出support）</li>
+<li>4.support（表示可以跳出support，不跳出 media）</li>
+</ul>
+</div>
+<p><strong class="common_title">单个跳出应用</strong></p>
+<figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 使用</span></span><br><span class="line"><span class="selector-class">.box_cc</span>&#123;</span><br><span class="line">  <span class="selector-tag">div</span>&#123;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#f00</span>;</span><br><span class="line">    <span class="keyword">@at-root</span> #box_id&#123;</span><br><span class="line">      <span class="attribute">font-size</span>: <span class="number">10px</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 编译后的结果</span></span><br><span class="line"><span class="selector-id">#box_id</span>&#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">10px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.box_cc</span> <span class="selector-tag">div</span>&#123;</span><br><span class="line">  <span class="attribute">color</span>:<span class="number">#f00</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong class="common_title">多个跳出应用</strong></p>
+<figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 使用</span></span><br><span class="line"><span class="selector-class">.box_cc</span>&#123;</span><br><span class="line">  <span class="selector-id">#app</span>&#123;</span><br><span class="line">    backdrop-<span class="attribute">filter</span>:<span class="built_in">blur</span>(<span class="number">5px</span>) <span class="built_in">saturate</span>(<span class="number">180%</span>);</span><br><span class="line">    <span class="keyword">@at-root</span>&#123;</span><br><span class="line">      <span class="selector-id">#box_id1</span>&#123;</span><br><span class="line">        <span class="attribute">font-size</span>: <span class="number">10px</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="selector-id">#box_id2</span>&#123;</span><br><span class="line">        <span class="attribute">font-size</span>: <span class="number">20px</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 编译后的结果</span></span><br><span class="line"><span class="selector-class">.box_cc</span> <span class="selector-id">#app</span>&#123;</span><br><span class="line">  backdrop-<span class="attribute">filter</span>:<span class="built_in">blur</span>(<span class="number">5px</span>) <span class="built_in">saturate</span>(<span class="number">180%</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-id">#box_id1</span>&#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">10px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-id">#box_id2</span>&#123;</span><br><span class="line">  <span class="attribute">font-size</span>:<span class="number">20px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<div class="note danger simple no-icon flat"><p><span class="font_color">注意</span>：跳出继承器是不管有多少层多会直接跳出（在设置的参数范围里）</p>
+</div>
+<h3 id="content占位符"><a href="#content占位符" class="headerlink" title="@content占位符"></a>@content占位符</h3><p>配和@include使用<br><figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="comment">//定义</span></span><br><span class="line"><span class="keyword">@mixin</span> res(<span class="variable">$col</span>)&#123;</span><br><span class="line">  <span class="attribute">color</span>:<span class="variable">$col</span>;</span><br><span class="line">  <span class="keyword">@content</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">  <span class="keyword">@include</span>(<span class="number">#f00</span>)&#123;</span><br><span class="line">    <span class="attribute">font-size</span>:<span class="number">18px</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//编译后的结果</span></span><br><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">  <span class="attribute">color</span>:<span class="number">#f00</span>;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">18px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="mixin混合器与-include引入器"><a href="#mixin混合器与-include引入器" class="headerlink" title="@mixin混合器与@include引入器"></a>@mixin混合器与@include引入器</h3><blockquote>
+<p>混合器的定义模式 @mixin name(<arguments...>) { … }<br>@include 的使用模式 @include name(&lt;…arg&gt;){…}</arguments...></p>
+</blockquote>
+<figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="comment">//定义</span></span><br><span class="line"><span class="comment">//如果没有参数可以直接小括号</span></span><br><span class="line"><span class="keyword">@mixin</span> between &#123;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    <span class="attribute">align-items</span>: center;</span><br><span class="line">    <span class="attribute">justify-content</span>: space-between;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 如果有参数且给它一个默认值</span></span><br><span class="line"><span class="keyword">@mixin</span> boxSize(<span class="variable">$w</span>:<span class="number">100px</span>,<span class="variable">$h</span>)&#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="variable">$w</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="variable">$h</span>;</span><br><span class="line">  <span class="keyword">@content</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//使用</span></span><br><span class="line"><span class="selector-class">.div_box</span>&#123;</span><br><span class="line">  <span class="keyword">@include</span> boxSize(<span class="number">100px</span>,<span class="number">100px</span>)&#123;</span><br><span class="line">    <span class="attribute">box-sizing</span>:border-box;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//编译后的结果</span></span><br><span class="line"><span class="selector-class">.div_box</span>&#123;</span><br><span class="line">  <span class="attribute">width</span>:<span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">box-sizing</span>:border-box</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="each…in…的使用"><a href="#each…in…的使用" class="headerlink" title="@each…in…的使用"></a>@each…in…的使用</h3><details class="folding-tag" cyan><summary> 点击查看@each使用详情 </summary>
+              <div class="content">
+              <p class="common_title">映射一对多的使用</p><figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="comment">//定义</span></span><br><span class="line"><span class="variable">$color_val</span>: <span class="number">#f00</span>,<span class="number">#fa0</span>,<span class="number">#c3a</span>;</span><br><span class="line"><span class="keyword">@each</span> <span class="variable">$col</span> in <span class="variable">$color_val</span> &#123;</span><br><span class="line">  <span class="selector-class">.c_</span>#&#123;<span class="variable">$col</span>&#125;&#123;</span><br><span class="line">    <span class="attribute">color</span>:<span class="variable">$col</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//编译后的结果</span></span><br><span class="line"><span class="selector-class">.c_</span><span class="selector-id">#f00</span>&#123;</span><br><span class="line">  <span class="attribute">color</span>:<span class="number">#f00</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.c_</span><span class="selector-id">#fa0</span>&#123;</span><br><span class="line">  <span class="attribute">color</span>:<span class="number">#fa0</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.c_</span><span class="selector-id">#c3a</span>&#123;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#c3a</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p class="common_title">多重分配</p><figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="comment">//定义</span></span><br><span class="line"><span class="variable">$listVal</span>:(aqua,dotted),(red,solid),(green,double);</span><br><span class="line"><span class="keyword">@each</span> <span class="variable">$val1</span>,<span class="variable">$val2</span> in <span class="variable">$listVal</span>&#123;</span><br><span class="line">  .#&#123;<span class="variable">$val1</span>&#125;&#123;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">1px</span> #&#123;<span class="variable">$val2</span>&#125; #&#123;<span class="variable">$val1</span>&#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//编译结果</span></span><br><span class="line"><span class="selector-class">.aqua</span>&#123;  <span class="attribute">border</span>:<span class="number">1px</span> dotted aqua;&#125;;</span><br><span class="line"><span class="selector-class">.red</span>&#123; <span class="attribute">border</span>: <span class="number">1px</span> solid red&#125;;</span><br><span class="line"><span class="selector-class">.green</span> &#123; <span class="attribute">border</span>:<span class="number">1px</span> double green&#125;;</span><br></pre></td></tr></table></figure><p class="common_title">多重分配及映射</p><figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 定义</span></span><br><span class="line"><span class="variable">$bal-common</span>:(head_box1:<span class="number">#cc2</span>,head_box2:<span class="number">#a3f</span>,head_box3:<span class="number">#caa</span>);</span><br><span class="line"><span class="keyword">@each</span> <span class="variable">$val1</span>,<span class="variable">$val2</span> in <span class="variable">$bal-common</span>&#123;</span><br><span class="line">  .#&#123;<span class="variable">$val1</span>&#125;&#123;</span><br><span class="line">    <span class="attribute">color</span>: #&#123;<span class="variable">$val2</span>&#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//编译结果</span></span><br><span class="line"><span class="selector-class">.head_box1</span>&#123;<span class="attribute">color</span>: <span class="number">#cc2</span>&#125;;</span><br><span class="line"><span class="selector-class">.head_box2</span>&#123;<span class="attribute">color</span>: <span class="number">#a3f</span>&#125;;</span><br><span class="line"><span class="selector-class">.head_box3</span>&#123;<span class="attribute">color</span>: <span class="number">#caa</span>&#125;;</span><br></pre></td></tr></table></figure>
+              </div>
+            </details>
+<h3 id="map-has-key的应用"><a href="#map-has-key的应用" class="headerlink" title="map-has-key的应用"></a>map-has-key的应用</h3><div class="note info simple no-icono flat"><p><span class="font_color">map-has-key</span>是遍历定义的键值对类型，如果存在就返回true 不存在就返回false<br>语法：map-has-key(定义的类型值,这个类型里是否存在的值)</p>
+</div>
+<figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="comment">//使用</span></span><br><span class="line"><span class="variable">$font-weights</span>:(<span class="string">&#x27;samll&#x27;</span>:<span class="number">400</span>,<span class="string">&#x27;medium&#x27;</span>:<span class="number">500</span>,<span class="string">&#x27;bold&#x27;</span>:<span class="number">600</span>);</span><br><span class="line"><span class="built_in">map-has-key</span>($font-weights,&#x27;samll&#x27;)<span class="comment">// true</span></span><br><span class="line"><span class="built_in">map-has-key</span>($font-weights,&#x27;body&#x27;) <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+<h3 id="map-get的应用"><a href="#map-get的应用" class="headerlink" title="map-get的应用"></a>map-get的应用</h3><div class="note info simple no-icono flat"><p><span class="font_color">map-get</span>是获取键值对类型的具体值<br>语法：map-get(定义的类型值,类型的键名)</p>
+</div>
+<figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="comment">//使用</span></span><br><span class="line"><span class="variable">$font-weights</span>:(<span class="string">&#x27;samll&#x27;</span>:<span class="number">400</span>,<span class="string">&#x27;medium&#x27;</span>:<span class="number">500</span>,<span class="string">&#x27;bold&#x27;</span>:<span class="number">600</span>);</span><br><span class="line"><span class="built_in">map-get</span>($font-weights,&#x27;samll&#x27;) <span class="comment">//400</span></span><br></pre></td></tr></table></figure>
+<h3 id="scssjavascript"><a href="#scssjavascript" class="headerlink" title="scssjavascript"></a>scssjavascript</h3><h4 id="fucntion函数指令于-return返回值指令"><a href="#fucntion函数指令于-return返回值指令" class="headerlink" title="@fucntion函数指令于@return返回值指令"></a>@fucntion函数指令于@return返回值指令</h4><div class="note info simple no-icon flat"><p><span class="font_color">@function</span><br>函数指令类型于js里的函数，这里的函数配合@return使用处理一下复杂的逻辑</p>
+<p><span class="font_color">语法</span>：@function name(<arg>){...}</arg></p>
+<p><span class="font_color">使用</span>：name(<arg>)</arg></p>
+
+<p><span class="font_color">@return</span></p>
+<p><span class="font_color">使用</span>:@function name(<arg>){@return xxx;}(注意：必须配合@function使用，不能单独使用)</arg></p></div>
+<figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 定义</span></span><br><span class="line"><span class="variable">$font-weights</span>:(<span class="string">&#x27;samll&#x27;</span>:<span class="number">400</span>,<span class="string">&#x27;medium&#x27;</span>:<span class="number">500</span>,<span class="string">&#x27;bold&#x27;</span>:<span class="number">600</span>);</span><br><span class="line"><span class="variable">$class-name</span>:cs_amall,cs_medium,cs_bold;</span><br><span class="line"><span class="keyword">@function</span> customFuc(<span class="variable">$n</span>,<span class="variable">$val</span>,<span class="variable">$fonts</span>:<span class="variable">$font-weights</span>)&#123;</span><br><span class="line">  <span class="keyword">@if</span> map-has-key(<span class="variable">$fonts</span>,<span class="variable">$val</span>)&#123;</span><br><span class="line">    <span class="keyword">@each</span> <span class="variable">$el</span> in <span class="variable">$class-name</span> &#123;</span><br><span class="line">      .#&#123;<span class="variable">$el</span>&#125;&#123;</span><br><span class="line">        <span class="attribute">width</span>: #&#123;<span class="built_in">map-get</span>($fonts,$val) + <span class="variable">$n</span>&#125;px;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">@else</span> &#123;</span><br><span class="line">    <span class="keyword">@warn</span> <span class="string">&#x27;Undefined points #&#123;$fonts&#125;&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line"><span class="built_in">customFuc</span>(<span class="number">200</span>,&#x27;samll&#x27;,$font-weights);</span><br><span class="line"><span class="comment">// @function加return的定义</span></span><br><span class="line"><span class="keyword">@function</span> customFuc1(<span class="variable">$n</span>)&#123;</span><br><span class="line">  <span class="keyword">@return</span> <span class="variable">$n</span>*(<span class="variable">$n</span>+<span class="number">100</span>)</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line"><span class="selector-class">.box</span>&#123;</span><br><span class="line">  <span class="attribute">height</span>: <span class="built_in">customFuc1</span>(<span class="number">100</span>)px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="not指令"><a href="#not指令" class="headerlink" title="not指令"></a>not指令</h4><div class="note info simple no-icon flat"><p><span class="font_color">not</span>表示的就是非</p></div>
+<figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="variable">$--i-ce</span>:true;</span><br><span class="line"><span class="keyword">@if</span> <span class="keyword">not</span> <span class="variable">$--i-ce</span> === <span class="keyword">@if</span>(!<span class="variable">$--i-ce</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="if-elseif-else"><a href="#if-elseif-else" class="headerlink" title="@if@elseif@else"></a>@if@elseif@else</h4><div class="note info simple no-icon flat"><p><span class="common_title">@if逻辑判断语句</span></p>
+<p class="font_color">注意：在scss中除了null和false返回false其它的多是返回true</p>
+<p><span class="font_color">语法</span>：@if(...){...}@else if(...){...}@else{...}</p></div>
+<figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="comment">//定义</span></span><br><span class="line"><span class="keyword">@mixin</span> isHeight(<span class="variable">$value</span>:visible)&#123;</span><br><span class="line">  <span class="keyword">@if</span> <span class="variable">$isDigH</span> == visible&#123;</span><br><span class="line">    <span class="attribute">height</span>: <span class="variable">$digH</span>;</span><br><span class="line">  &#125;<span class="keyword">@else</span> if <span class="variable">$isDigH</span> == none&#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">  <span class="keyword">@include</span> isHeight(none);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="for循环指令"><a href="#for循环指令" class="headerlink" title="@for循环指令"></a>@for循环指令</h4><div class="note info simple no-icon flat"><p><span class="common_title">@for循环指令有二种用法</span></p>
+<ul>
+<li>1.@for $i from <code>&lt;start&gt;</code> through <code>&lt;end&gt;</code>其中$i:表示索引，但是和js不同的是，它的索引是<span class="common_title">[start,end]</span>决定的， start开始end结束 </li>
+<li>2.@for $i from <code>start</code> to <code>&lt;end&gt;</code> 其中$i:表示索引，它的索引是<span class="common_title">[start,end-1]</span>决定的，start开始end-1结束</li>
+</ul>
+</div>
+<figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> forFuc(<span class="variable">$vl</span>,<span class="variable">$col</span>)&#123;</span><br><span class="line">  <span class="keyword">@for</span> <span class="variable">$i</span> from <span class="number">1</span> through <span class="number">3</span>&#123;</span><br><span class="line">    .#&#123;<span class="variable">$vl</span>&#125;_#&#123;<span class="variable">$i</span>&#125;&#123;</span><br><span class="line">      <span class="attribute">color</span>:#&#123;<span class="variable">$col</span>&#125;;</span><br><span class="line">      <span class="keyword">@content</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line"><span class="selector-class">.box</span>&#123;</span><br><span class="line">  <span class="keyword">@include</span> forFuc(blue,blue)&#123;<span class="attribute">text-align</span>:center;&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//编译后的结果</span></span><br><span class="line"><span class="selector-class">.box</span> <span class="selector-class">.blue_1</span>&#123;<span class="attribute">color</span>:blue;&#125;</span><br><span class="line"><span class="selector-class">.box</span> <span class="selector-class">.blue_2</span>&#123;<span class="attribute">color</span>:blue;&#125;</span><br><span class="line"><span class="selector-class">.box</span> <span class="selector-class">.blue_3</span>&#123;<span class="attribute">color</span>:blue;&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="while指令"><a href="#while指令" class="headerlink" title="@while指令"></a>@while指令</h4><div class="note info simple no-icon flat"><p><div><span class="common_title">@while指令</span>它与js中的while循环语句类似，当条件满足就继续执行，当条件为false的时候就结束循环体</div></p>
+<p><span class="common_title">语法</span>:@while $is {...}</p></div>
+<figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="comment">//使用</span></span><br><span class="line"><span class="variable">$vi</span>:<span class="number">6</span>;</span><br><span class="line"><span class="keyword">@while</span> <span class="variable">$vi</span>&gt;<span class="number">0</span>&#123;</span><br><span class="line">  <span class="selector-class">.ms-</span>#&#123;<span class="variable">$vi</span>&#125;&#123;</span><br><span class="line">    <span class="attribute">width</span>:<span class="number">2em</span>*<span class="variable">$vi</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="variable">$vi</span>: <span class="variable">$vi-2</span>; <span class="comment">//这个是条件执行体必须要些，不写造成死循环</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="参考网站"><a href="#参考网站" class="headerlink" title="参考网站"></a>参考网站</h4><div class="note info simple"><p><a target="_blank" rel="noopener" href="https://www.sasscss.com/">SASS官网</a><br><a target="_blank" rel="noopener" href="https://www.runoob.com/sass/sass-functions.html">菜鸟教程</a></p>
+</div>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://shumoyun.fun">ShuMo</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://shumoyun.fun/post/66cc2346/">https://shumoyun.fun/post/66cc2346/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://shumoyun.fun" target="_blank">ShuMo</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/scss/">scss</a><a class="post-meta__tags" href="/tags/css/">css</a></div><div class="post_share"><div class="social-share" data-image="/img/tagImg6.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/post/c3d84496/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/tagImg1.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">css中不常用但是很有效的样式简介</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card_custom_info is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/backgroundImg05.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name author_font_lin">ShuMo</div><div class="author-info__description author_font_lin">ShuMoの个人博客</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/xxxxx" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:xxxxxx@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://www.zhihu.com/people/ma-hao-fei-2" target="_blank" title="知乎"><i class="fab fa-zhihu"></i></a><a class="social-icon" href="https://blog.csdn.net/weixin_44543463" target="_blank" title="CSDN"><i class="fab fa-cuttlefish"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">每天多感觉时间不够，希望一天有48小时，特别是<span style="red;">周末</span>🤔</div><div class="xpand" style="height:200px;"></div></div><canvas class="illo" width="800" height="800" style="max-width: 200px; max-height: 200px; touch-action: none; width: 640px; height: 640px;"></canvas><script async="async" src="https://fastly.jsdelivr.net/gh/xiaopengand/blogCdn@latest/xzxr/twopeople1.js"></script><script async="async" src="https://fastly.jsdelivr.net/gh/xiaopengand/blogCdn@latest/xzxr/zdog.dist.js"></script><script id="rendered-js" async="async" src="https://fastly.jsdelivr.net/gh/xiaopengand/blogCdn@latest/xzxr/twopeople.js"></script><style>.card-widget.card-announcement {
+margin: 0;
+align-items: center;
+justify-content: center;
+text-align: center;
+}
+canvas {
+display: block;
+margin: 0 auto;
+cursor: move;
+}</style><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0%E8%AE%B0%E5%BD%95"><span class="toc-number">1.</span> <span class="toc-text">更新记录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%91%BD%E4%BB%A4%E7%9A%84%E8%A7%84%E8%8C%83"><span class="toc-number">2.</span> <span class="toc-text">文件命令的规范</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-number">3.</span> <span class="toc-text">变量的定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%86%85%E7%BD%AE%E5%87%BD%E6%95%B0"><span class="toc-number">4.</span> <span class="toc-text">常用内置函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%94%B9%E5%8F%98%E9%A2%9C%E8%89%B2%E5%86%85%E7%BD%AE%E5%87%BD%E6%95%B0"><span class="toc-number">4.1.</span> <span class="toc-text">改变颜色内置函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%84%E7%90%86%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E5%87%BD%E6%95%B0"><span class="toc-number">4.2.</span> <span class="toc-text">处理字符串的函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#index-list-val-%E6%9F%A5%E6%89%BElist%E7%B4%A2%E5%BC%95%E5%87%BD%E6%95%B0-val-%E6%9F%90%E4%B8%AA%E5%85%B7%E4%BD%93%E7%9A%84%E5%80%BC"><span class="toc-number">4.3.</span> <span class="toc-text">index(list,$val)查找list索引函数($val:某个具体的值)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#nth-list-inx-%E5%87%BD%E6%95%B0%E8%BF%94%E5%9B%9E%E7%9A%84%E6%98%AF%E5%AF%B9%E5%BA%94%E7%B4%A2%E5%BC%95%E7%9A%84%E5%80%BC%EF%BC%8C%E5%85%B7%E4%BD%93%E5%BA%94%E7%94%A8%E5%A6%82%E4%B8%8B"><span class="toc-number">4.4.</span> <span class="toc-text">nth($list,inx)函数返回的是对应索引的值，具体应用如下</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#warn%E6%8F%90%E7%A4%BA%E5%87%BD%E6%95%B0"><span class="toc-number">4.5.</span> <span class="toc-text">@warn提示函数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E5%99%A8%E7%9A%84%E5%BA%94%E7%94%A8"><span class="toc-number">5.</span> <span class="toc-text">选择器的应用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#extend-%E9%80%89%E6%8B%A9%E7%BB%A7%E6%89%BF%E5%99%A8"><span class="toc-number">5.1.</span> <span class="toc-text">@extend 选择继承器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E5%99%A8%E5%8D%A0%E4%BD%8D%E7%AC%A6"><span class="toc-number">5.2.</span> <span class="toc-text">%选择器占位符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#at-root%E8%B7%B3%E5%87%BA%E7%BB%A7%E6%89%BF%E5%99%A8"><span class="toc-number">5.3.</span> <span class="toc-text">@at-root跳出继承器</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#content%E5%8D%A0%E4%BD%8D%E7%AC%A6"><span class="toc-number">6.</span> <span class="toc-text">@content占位符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mixin%E6%B7%B7%E5%90%88%E5%99%A8%E4%B8%8E-include%E5%BC%95%E5%85%A5%E5%99%A8"><span class="toc-number">7.</span> <span class="toc-text">@mixin混合器与@include引入器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#each%E2%80%A6in%E2%80%A6%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">8.</span> <span class="toc-text">@each…in…的使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#map-has-key%E7%9A%84%E5%BA%94%E7%94%A8"><span class="toc-number">9.</span> <span class="toc-text">map-has-key的应用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#map-get%E7%9A%84%E5%BA%94%E7%94%A8"><span class="toc-number">10.</span> <span class="toc-text">map-get的应用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#scssjavascript"><span class="toc-number">11.</span> <span class="toc-text">scssjavascript</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#fucntion%E5%87%BD%E6%95%B0%E6%8C%87%E4%BB%A4%E4%BA%8E-return%E8%BF%94%E5%9B%9E%E5%80%BC%E6%8C%87%E4%BB%A4"><span class="toc-number">11.1.</span> <span class="toc-text">@fucntion函数指令于@return返回值指令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#not%E6%8C%87%E4%BB%A4"><span class="toc-number">11.2.</span> <span class="toc-text">not指令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#if-elseif-else"><span class="toc-number">11.3.</span> <span class="toc-text">@if@elseif@else</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#for%E5%BE%AA%E7%8E%AF%E6%8C%87%E4%BB%A4"><span class="toc-number">11.4.</span> <span class="toc-text">@for循环指令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#while%E6%8C%87%E4%BB%A4"><span class="toc-number">11.5.</span> <span class="toc-text">@while指令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E7%BD%91%E7%AB%99"><span class="toc-number">11.6.</span> <span class="toc-text">参考网站</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/post/66cc2346/" title="scss的内置函数笔记"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/tagImg6.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="scss的内置函数笔记"/></a><div class="content"><a class="title" href="/post/66cc2346/" title="scss的内置函数笔记">scss的内置函数笔记</a><time datetime="2022-12-05T00:24:52.000Z" title="发表于 2022-12-05 08:24:52">2022-12-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/post/c3d84496/" title="css中不常用但是很有效的样式简介"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/tagImg1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="css中不常用但是很有效的样式简介"/></a><div class="content"><a class="title" href="/post/c3d84496/" title="css中不常用但是很有效的样式简介">css中不常用但是很有效的样式简介</a><time datetime="2022-11-22T05:04:20.000Z" title="发表于 2022-11-22 13:04:20">2022-11-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/post/b1cc6949/" title="hexo之踩坑记录(一)"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/tagImg10.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="hexo之踩坑记录(一)"/></a><div class="content"><a class="title" href="/post/b1cc6949/" title="hexo之踩坑记录(一)">hexo之踩坑记录(一)</a><time datetime="2022-11-18T00:29:57.000Z" title="发表于 2022-11-18 08:29:57">2022-11-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/post/80bacdb6/" title="hexo从零开始之butterfly主题美化(Ⅱ)"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/tagImg1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="hexo从零开始之butterfly主题美化(Ⅱ)"/></a><div class="content"><a class="title" href="/post/80bacdb6/" title="hexo从零开始之butterfly主题美化(Ⅱ)">hexo从零开始之butterfly主题美化(Ⅱ)</a><time datetime="2022-11-17T01:08:30.000Z" title="发表于 2022-11-17 09:08:30">2022-11-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/post/5836b8c9/" title="hexo常用记录"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/tagImg2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="hexo常用记录"/></a><div class="content"><a class="title" href="/post/5836b8c9/" title="hexo常用记录">hexo常用记录</a><time datetime="2022-11-16T08:41:52.000Z" title="发表于 2022-11-16 16:41:52">2022-11-16</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022  <i id="heartbeat" class="fa fas fa-heartbeat"></i> ShuMo</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><a target="_blank" href="https://hexo.io/"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为Hexo"></a>&nbsp;<a target="_blank" href="https://github.com/jerryc127/hexo-theme-butterfly"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用butterfly"></a></div></div><link rel="stylesheet" href="https://fastly.jsdelivr.net/gh/HCLonely/images@master/others/heartbeat.min.css"></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><a class="icon-V hidden" onclick="switchNightMode()" title="浅色和深色模式转换"><svg width="25" height="25" viewBox="0 0 1024 1024"><use id="modeicon" xlink:href="#icon-moon"></use></svg></a><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat_btn" type="button" title="聊天"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><a class="rightMenu-item" href="javascript:window.history.back();"><i class="fa fa-arrow-left"></i></a><a class="rightMenu-item" href="javascript:window.history.forward();"><i class="fa fa-arrow-right"></i></a><a class="rightMenu-item" href="javascript:window.location.reload();"><i class="fa fa-refresh"></i></a><a class="rightMenu-item" href="javascript:rmf.scrollToTop();"><i class="fa fa-arrow-up"></i></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-text"><a class="rightMenu-item" href="javascript:rmf.copySelect();"><i class="fa fa-copy"></i><span>复制</span></a><a class="rightMenu-item" href="javascript:window.open(&quot;https://www.baidu.com/s?wd=&quot;+window.getSelection().toString());window.location.reload();"><i class="iconfont icon-baidu"></i><span>百度搜索</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-too"><a class="rightMenu-item" href="javascript:window.open(window.getSelection().toString());window.location.reload();"><i class="fa fa-link"></i><span>转到链接</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-paste"><a class="rightMenu-item" href="javascript:rmf.paste()"><i class="fa fa-copy"></i><span>粘贴</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-post"><a class="rightMenu-item" href="#post-comment"><i class="fas fa-comment"></i><span>空降评论</span></a><a class="rightMenu-item" href="javascript:rmf.copyWordsLink()"><i class="fa fa-link"></i><span>复制本文地址</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-to"><a class="rightMenu-item" href="javascript:rmf.openWithNewTab()"><i class="fa fa-window-restore"></i><span>新窗口打开</span></a><a class="rightMenu-item" id="menu-too" href="javascript:rmf.open()"><i class="fa fa-link"></i><span>转到链接</span></a><a class="rightMenu-item" href="javascript:rmf.copyLink()"><i class="fa fa-copy"></i><span>复制链接</span></a></div><div class="rightMenu-group rightMenu-line hide" id="menu-img"><a class="rightMenu-item" href="./#post-comment"><i class="fa fa-download"></i><span>保存图片</span></a><a class="rightMenu-item" href="javascript:rmf.openWithNewTab()"><i class="fa fa-window-restore"></i><span>在新窗口打开</span></a><a class="rightMenu-item" href="javascript:rmf.click()"><i class="fa fa-arrows-alt"></i><span>全屏显示</span></a><a class="rightMenu-item" href="javascript:rmf.copyLink()"><i class="fa fa-copy"></i><span>复制图片链接</span></a></div><div class="rightMenu-group rightMenu-line"><a class="rightMenu-item" href="javascript:toRandomPost()"><i class="fa fa-paper-plane"></i><span>随便逛逛</span></a><a class="rightMenu-item" href="javascript:rmf.switchDarkMode();"><i class="fa fa-moon"></i><span>昼夜切换</span></a><a class="rightMenu-item" href="javascript:rmf.translate();"><i class="iconfont icon-fanti"></i><span>繁简转换</span></a><a class="rightMenu-item" href="javascript:rmf.switchReadMode();"><i class="fa fa-book"></i><span>阅读模式</span></a><a class="rightMenu-item" href="javascript:window.location.href=&quot;/about/&quot;;"><i class="fa fa-info-circle"></i><span>版权声明</span></a></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        insertScript: [200, () => {
+          document.querySelectorAll('mjx-container').forEach(node => {
+            if (node.hasAttribute('display')) {
+              btf.wrap(node, 'div', { class: 'mathjax-overflow' })
+            } else {
+              btf.wrap(node, 'span', { class: 'mathjax-overflow' })
+            }
+          });
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://tiwkoo.zhujing.fun/',
+      region: '',
+      onCommentLoaded: function () {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://tiwkoo.zhujing.fun/',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      countELement.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const runFn = () => {
+    init()
+    
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    } 
+    getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><script defer src="https://npm.elemecdn.com/jquery@latest/dist/jquery.min.js"></script><script src="/js/sun_moon.js" async></script><script async  src="/js/rightmenu.js"></script><script async src="https://cdn.jsdelivr.net/npm/sweetalert2@8.19.0/dist/sweetalert2.all.js"></script><script type="text/javascript" src="/js/languages.js"></script><script type="text/javascript" src="/js/calendar.js"></script><canvas id="universe"></canvas><script async src="/js/universe.js"></script><script async src="/js/custom/custom.js"></script><script async src="//at.alicdn.com/t/c/font_3776513_mlf19sseglm.js"></script><script data-pjax async src="https://npm.elemecdn.com/tzy-blog/lib/js/theme/chocolate.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script>(function(d, w, c) {
+    w.ChatraID = 'op2syf9E8wWNymnAa';
+    var s = d.createElement('script');
+    w[c] = w[c] || function() {
+        (w[c].q = w[c].q || []).push(arguments);
+    };
+    s.async = true;
+    s.src = 'https://call.chatra.io/chatra.js';
+    if (d.head) d.head.appendChild(s);
+})(document, window, 'Chatra');
+
+if (true) {
+  var chatBtnFn = () => {
+    var chatBtn = document.getElementById("chat_btn")
+    chatBtn.addEventListener("click", function(){
+      Chatra('openChat')
+    });
+  }
+  chatBtnFn()
+} else {
+  if (false) {
+    function chatBtnHide () {
+      Chatra('hide')
+    }
+    function chatBtnShow () {
+      Chatra('show')
+    }
+  }
+}</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_clock_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/hexo-butterfly-clock/lib/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_injector_config();
+  }
+  </script><script src="https://pv.sohu.com/cityjson?ie=utf-8"></script><script data-pjax src="https://npm.elemecdn.com/hexo-butterfly-clock/lib/clock.min.js"></script><script async src="//at.alicdn.com/t/font_2032782_8d5kxvn09md.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/z16.model.json"},"display":{"position":"right","width":150,"height":300,"hOffset":20,"vOffset":-20},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/"});</script></body></html>
